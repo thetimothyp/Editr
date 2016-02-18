@@ -124,6 +124,19 @@ class Main(QtWidgets.QMainWindow):
 		subAction = QtWidgets.QAction(QtGui.QIcon("icons/subscript.png"), "Subscript", self)
 		subAction.triggered.connect(self.subScript)
 
+		alignLeft = QtWidgets.QAction(QtGui.QIcon("icons/align-left.png"), "Align left", self)
+		alignLeft.triggered.connect(self.alignLeft)
+
+		alignCenter = QtWidgets.QAction(QtGui.QIcon("icons/align-center.png"), "Align center", self)
+		alignCenter.triggered.connect(self.alignCenter)
+
+		alignRight = QtWidgets.QAction(QtGui.QIcon("icons/align-right.png"), "Align right", self)
+		alignRight.triggered.connect(self.alignRight)
+
+		alignJustify = QtWidgets.QAction(QtGui.QIcon("icons/align-justify.png"), "Align justify", self)
+		alignJustify.triggered.connect(self.alignJustify)
+
+
 		self.formatbar = self.addToolBar("Format")
 
 		self.formatbar.addWidget(fontBox)
@@ -142,6 +155,13 @@ class Main(QtWidgets.QMainWindow):
 		self.formatbar.addAction(strikeAction)
 		self.formatbar.addAction(superAction)
 		self.formatbar.addAction(subAction)
+
+		self.formatbar.addSeparator()
+
+		self.formatbar.addAction(alignLeft)
+		self.formatbar.addAction(alignCenter)
+		self.formatbar.addAction(alignRight)
+		self.formatbar.addAction(alignJustify)
 
 		self.formatbar.addSeparator()
 
@@ -307,6 +327,18 @@ class Main(QtWidgets.QMainWindow):
 		else:
 			fmt.setVerticalAlignment(QtGui.QTextCharFormat.AlignNormal)
 		self.text.setCurrentCharFormat(fmt)
+
+	def alignLeft(self):
+		self.text.setAlignment(Qt.AlignLeft)
+
+	def alignRight(self):
+		self.text.setAlignment(Qt.AlignRight)
+
+	def alignCenter(self):
+		self.text.setAlignment(Qt.AlignCenter)
+
+	def alignJustify(self):
+		self.text.setAlignment(Qt.AlignJustify)
 
 def main():
 
