@@ -95,10 +95,9 @@ class Main(QtWidgets.QMainWindow):
 
 		fontSize.activated.connect(self.fontSize)
 
-		fontSizes = ['6','7','8','9','10','11','12','14','18','24','36','48','72']
+		self.fontSizes = ['6','7','8','9','10','11','12','14','18','24','36','48','72']
 
-		for i in fontSizes:
-			fontSize.addItem(i)
+		fontSize.addItems(self.fontSizes)
 
 		fontColor = QtWidgets.QAction(QtGui.QIcon("icons/font-color.png"), "Change font color", self)
 		fontColor.triggered.connect(self.fontColor)
@@ -266,7 +265,7 @@ class Main(QtWidgets.QMainWindow):
 		self.text.setCurrentFont(font)
 
 	def fontSize(self, fontsize):
-		self.text.setFontPointSize(int(fontsize))
+		self.text.setFontPointSize(int(self.fontSizes[fontsize]))
 
 	def fontColor(self):
 		# Get a color from the text dialog
